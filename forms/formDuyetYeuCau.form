@@ -1,0 +1,152 @@
+{
+  "components": [
+    {
+      "text": "# Xét duyệt yêu cầu",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0vdoeui",
+        "columns": null
+      },
+      "id": "Field_0vilqhm"
+    },
+    {
+      "label": "Tên người yêu cầu",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0jff9pm",
+        "columns": null
+      },
+      "id": "Field_0u7tz73",
+      "key": "name",
+      "validate": {
+        "required": false
+      },
+      "readonly": true
+    },
+    {
+      "label": "Email liên lạc",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1vrdf2a",
+        "columns": null
+      },
+      "id": "Field_1yo6x18",
+      "key": "email",
+      "readonly": true
+    },
+    {
+      "label": "Phòng ban",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1vrdf2a",
+        "columns": null
+      },
+      "id": "Field_0zp0kmj",
+      "key": "dpm",
+      "readonly": true
+    },
+    {
+      "label": "Nội dung yêu cầu",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_087cbg3",
+        "columns": null
+      },
+      "id": "Field_0rrhjmt",
+      "key": "contentRequested",
+      "readonly": true
+    },
+    {
+      "label": "Danh sách tài liệu liên quan",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1x8uzkl",
+        "columns": null
+      },
+      "id": "Field_0nfihw1",
+      "key": "textfield_qbtrnn",
+      "readonly": true
+    },
+    {
+      "components": [
+        {
+          "text": "# Duyệt đơn",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1p2nlxj",
+            "columns": null
+          },
+          "id": "Field_18xyijh"
+        },
+        {
+          "values": [
+            {
+              "label": "Không",
+              "value": "0"
+            },
+            {
+              "label": "Có",
+              "value": "1"
+            }
+          ],
+          "label": "Duyệt đơn?",
+          "type": "radio",
+          "layout": {
+            "row": "Row_0hqtv78",
+            "columns": null
+          },
+          "id": "Field_1ekdbvs",
+          "key": "approved",
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "label": "Lý do không duyệt",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_0lqxaeh",
+            "columns": null
+          },
+          "id": "Field_1y73h6d",
+          "key": "reasonsForRejected",
+          "validate": {
+            "required": false
+          },
+          "conditional": {
+            "hide": "=approved = 1"
+          }
+        }
+      ],
+      "showOutline": false,
+      "label": "Group",
+      "type": "group",
+      "layout": {
+        "row": "Row_0adxhnr",
+        "columns": null
+      },
+      "id": "Field_1fvcxeb"
+    },
+    {
+      "action": "submit",
+      "label": "Gửi kết quả",
+      "type": "button",
+      "layout": {
+        "row": "Row_0sqs0hw",
+        "columns": null
+      },
+      "id": "Field_1xg8o1t"
+    }
+  ],
+  "type": "default",
+  "id": "FormDonYeuCauTest",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.21.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.15.0",
+  "schemaVersion": 15
+}

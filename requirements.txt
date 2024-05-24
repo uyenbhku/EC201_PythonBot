@@ -1,0 +1,3 @@
+pycamunda
+python-dotenv
+google-generativeai
