@@ -15,7 +15,7 @@ from dotenv import load_dotenv, dotenv_values
 load_dotenv() 
 url = os.getenv('ENDPOINT')
 start_instance = pycamunda.processdef.StartInstance(url=url, key=os.getenv('PROCESS_KEY_ID'))
-
+os.environ['NO_PROXY'] = url
 
 ## Configure Gemini
 import google.generativeai as genai
@@ -23,6 +23,14 @@ GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash-latest')
 
+import socket
+
+port = 55
+host = socket.gethostname()
+l = []
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((host, port))
+s.listen(1)
 
 # Connect database
 import sqlite3
