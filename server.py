@@ -23,19 +23,6 @@ GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash-latest')
 
-import socket
-
-port = 55
-host = socket.gethostname()
-l = []
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((host, port))
-s.listen(1)
-while 1:
-  (c, a) = s.accept()
-  l.append(c)
-  print ('%d: connection from %s' % (len(l), a))
-
 # Connect database
 import sqlite3
 con = sqlite3.connect("ticket.db")  
