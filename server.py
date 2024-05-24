@@ -31,6 +31,10 @@ l = []
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((host, port))
 s.listen(1)
+while 1:
+  (c, a) = s.accept()
+  l.append(c)
+  print ('%d: connection from %s' % (len(l), a))
 
 # Connect database
 import sqlite3
