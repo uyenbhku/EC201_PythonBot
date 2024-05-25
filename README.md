@@ -4,7 +4,7 @@
 ## By: [uyenbhku](https://github.com/uyenbhku)
 
 ### Prerequesites:
-- Python 3
+- Python 3.10
 - Camunda Modeler
 
 

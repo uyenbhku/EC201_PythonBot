@@ -4,29 +4,29 @@
     <bpmn:startEvent id="StartEvent_1" name="Yêu cầu thẩm định dự án được tạo">
       <bpmn:outgoing>Flow_182xdpg</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_182xdpg" sourceRef="StartEvent_1" targetRef="Activity_191anrq" />
-    <bpmn:userTask id="Activity_191anrq" name="Điền đơn Yêu cầu thẩm định dự án" camunda:formKey="camunda-forms:deployment:formYeuCau.form">
+    <bpmn:sequenceFlow id="Flow_182xdpg" sourceRef="StartEvent_1" targetRef="yeuCauThamDinh" />
+    <bpmn:userTask id="yeuCauThamDinh" name="Điền đơn Yêu cầu thẩm định dự án" camunda:formKey="camunda-forms:deployment:formYeuCau.form">
       <bpmn:extensionElements />
       <bpmn:incoming>Flow_182xdpg</bpmn:incoming>
       <bpmn:outgoing>Flow_0xsk3o6</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_0xsk3o6" sourceRef="Activity_191anrq" targetRef="Activity_1fjn3y6" />
-    <bpmn:userTask id="Activity_1fjn3y6" name="Xét duyệt đơn" camunda:formKey="camunda-forms:deployment:formDuyetYeuCau.form">
+    <bpmn:sequenceFlow id="Flow_0xsk3o6" sourceRef="yeuCauThamDinh" targetRef="xetDuyetDon" />
+    <bpmn:userTask id="xetDuyetDon" name="Xét duyệt đơn" camunda:formKey="camunda-forms:deployment:formDuyetYeuCau.form" camunda:candidateGroups="Chuyên viên">
       <bpmn:extensionElements />
       <bpmn:incoming>Flow_0xsk3o6</bpmn:incoming>
       <bpmn:outgoing>Flow_0bmn3nd</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:exclusiveGateway id="Gateway_15cw6ox" name="Được duyệt?">
+    <bpmn:exclusiveGateway id="duocDuyet" name="Được duyệt?">
       <bpmn:incoming>Flow_0bmn3nd</bpmn:incoming>
       <bpmn:outgoing>Flow_1t5sqc2</bpmn:outgoing>
       <bpmn:outgoing>Flow_07sima2</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0bmn3nd" sourceRef="Activity_1fjn3y6" targetRef="Gateway_15cw6ox" />
-    <bpmn:sequenceFlow id="Flow_1t5sqc2" name="Không" sourceRef="Gateway_15cw6ox" targetRef="Activity_1xz4bky">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved == 0}</bpmn:conditionExpression>
+    <bpmn:sequenceFlow id="Flow_0bmn3nd" sourceRef="xetDuyetDon" targetRef="duocDuyet" />
+    <bpmn:sequenceFlow id="Flow_1t5sqc2" name="Không" sourceRef="duocDuyet" targetRef="Activity_1xz4bky">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{approved == 0}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_07sima2" name="Có" sourceRef="Gateway_15cw6ox" targetRef="Activity_0zsuj7h">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved == 1}</bpmn:conditionExpression>
+    <bpmn:sequenceFlow id="Flow_07sima2" name="Có" sourceRef="duocDuyet" targetRef="Activity_0zsuj7h">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{approved == 1}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:serviceTask id="Activity_1xz4bky" name="Thông báo Yêu cầu không được duyệt" camunda:type="external" camunda:topic="rejectRequest">
       <bpmn:incoming>Flow_1t5sqc2</bpmn:incoming>
@@ -64,15 +64,15 @@
           <dc:Bounds x="156" y="282" width="83" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0jhabc4_di" bpmnElement="Activity_191anrq">
+      <bpmndi:BPMNShape id="Activity_0jhabc4_di" bpmnElement="yeuCauThamDinh">
         <dc:Bounds x="270" y="217" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0mvj84a_di" bpmnElement="Activity_1fjn3y6">
+      <bpmndi:BPMNShape id="Activity_0mvj84a_di" bpmnElement="xetDuyetDon">
         <dc:Bounds x="430" y="217" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_15cw6ox_di" bpmnElement="Gateway_15cw6ox" isMarkerVisible="true">
+      <bpmndi:BPMNShape id="Gateway_15cw6ox_di" bpmnElement="duocDuyet" isMarkerVisible="true">
         <dc:Bounds x="645" y="232" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="705" y="250" width="64" height="14" />
