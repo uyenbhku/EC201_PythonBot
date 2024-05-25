@@ -121,7 +121,7 @@
         }
       ],
       "showOutline": false,
-      "label": "Group",
+      "label": "",
       "type": "group",
       "layout": {
         "row": "Row_0adxhnr",
@@ -141,7 +141,7 @@
     }
   ],
   "type": "default",
-  "id": "FormDonYeuCauTest",
+  "id": "FormXetDuyetDonYeuCau",
   "exporter": {
     "name": "Camunda Modeler",
     "version": "5.21.0"

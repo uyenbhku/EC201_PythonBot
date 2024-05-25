@@ -54,11 +54,13 @@ def send_email(subject: str, body: str, to_email: str, path_to_file: str=""):
         server.sendmail(from_email, to_email, message.as_string())
 
 
+
 # Define a custom function to serialize datetime objects 
 def serialize_datetime(obj): 
     if isinstance(obj, datetime.datetime): 
         return obj.isoformat() 
     raise TypeError("Type not serializable") 
+
 
 
 departments = {
@@ -67,6 +69,7 @@ departments = {
     'dpm3': 'Department 3',
     'dpm4': 'Department 4',
 }
+
 
 
 def rejectRequest(name, email: str, reasonsForRejected, dpm):
@@ -85,7 +88,6 @@ def rejectRequest(name, email: str, reasonsForRejected, dpm):
     {reasonsForRejected.value}
     Không được bổ sung bất kỳ lý do nào khác ngoài những lý do đã cung cấp.
     Yêu cầu phòng ban hoặc người đại diện {name.value} thực hiện lại quy trình Yêu cầu Thẩm định.
-    Vui lòng chỉ trả về nội dung không qua format in đậm hay in nghiêng 
     """)
 
     send_email(subject, response.text, to_email=email.value)
@@ -101,6 +103,7 @@ def rejectRequest(name, email: str, reasonsForRejected, dpm):
     return {}
 
 
+
 def acceptRequest(name, email: str, dpm):
     ticket_id = str(uuid.uuid4())
 
@@ -114,7 +117,6 @@ def acceptRequest(name, email: str, dpm):
     response =  model.generate_content(f"""
     Viết một email từ Department 5 thể hiện đồng ý thực hiện yêu cầu Thẩm định cho phòng ban {departments[dpm.value]} của PVN.
     Yêu cầu phòng ban hoặc người đại diện {name} tiếp tục các quy trình tiếp theo.
-    Vui lòng chỉ trả về nội dung không qua format in đậm hay in nghiêng 
     """)
 
     send_email(subject, response.text, to_email=email.value)
