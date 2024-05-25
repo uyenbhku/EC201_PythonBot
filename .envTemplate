@@ -1,5 +1,5 @@
-PASS=
-EMAIL=
-ENDPOINT=
-PROCESS_KEY_ID=
-GOOGLE_API_KEY=
+PASS="PasswordForOutlookEmail"
+EMAIL="youroutlook@email.here"
+ENDPOINT="your-camunda-endpoint/engine-rest"
+PROCESS_KEY_ID="GuiYeuCauThamDinhDuAn"
+GOOGLE_API_KEY="watchhowhere__https://ai.google.dev/gemini-api/docs/get-started/tutorial?lang=python"
